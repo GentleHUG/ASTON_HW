@@ -1,9 +1,6 @@
-package edu.java.impl;
+package edu.java.list;
 
-
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class MyLinkedList<E>{
 	private int size;
@@ -189,10 +186,29 @@ public class MyLinkedList<E>{
 		return cursor;
 	}
 
-//	public static <T extends Comparable<T>> MyLinkedList<T> sort(MyLinkedList<T> old) {
-//		MyLinkedList<T> newOne = new MyLinkedList<>();
-//		newOne.addAll(old);
-//
-//		return newOne;
-//	}
+	public static <T extends Comparable<? super T>> MyLinkedList<T> sort(Collection<T> old) {
+		MyLinkedList<T> newOne = new MyLinkedList<>();
+		newOne.addAll(old);
+		Node<T> root = newOne.first;
+		boolean isSorted = false;
+
+		while (!isSorted) {
+			isSorted = true;
+			Node<T> cursor = root.getNext();
+
+			while (cursor != null) {
+				if (cursor.getVal().compareTo(cursor.getPrev().getVal()) < 0) {
+					T tmp = cursor.getVal();
+					cursor.setVal(cursor.getPrev().getVal());
+					cursor.getPrev().setVal(tmp);
+					isSorted = false;
+				}
+
+				cursor = cursor.getNext();
+			}
+
+		}
+
+		return newOne;
+	}
 }

@@ -1,4 +1,4 @@
-package edu.java.impl;
+package edu.java.list;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,5 +12,10 @@ public class Node<E> {
 
 	public Node(E val) {
 		this.val = val;
+	}
+
+	@Override
+	public String toString() {
+		return val.toString();
 	}
 }

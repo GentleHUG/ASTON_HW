@@ -1,4 +1,4 @@
-import edu.java.impl.MyLinkedList;
+import edu.java.list.MyLinkedList;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class SimpleTest {
+public class MyLinkedListTest {
 
 	@Test
 	public void initTest() {
@@ -101,6 +101,14 @@ public class SimpleTest {
 		assertEquals("[15, 11, 12]", list.toString());
 	}
 
+	@Test
+	public void sortTest() {
 
+		List<Integer> list = List.of(3,2,5,2,1);
+		MyLinkedList<Integer> myLinkedList = MyLinkedList.sort(list);
+
+		assertEquals("[1, 2, 2, 3, 5]", myLinkedList.toString());
+
+	}
 
 }
